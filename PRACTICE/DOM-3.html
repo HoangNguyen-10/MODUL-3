@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .main{
+            margin-top: 200px;
+            text-align: center;         
+        }
+
+        .form{          
+            background-color: aquamarine;
+            padding: 30px;
+            width:200px;
+            height:150px;
+            margin: auto;
+        }
+
+        .form-group {
+            padding: 5px;
+        }
+        .form-group label{
+            margin-bottom: 10px;
+        }
+
+    </style>
+</head>
+<body>
+    <div class="main">
+        <form action="" class="form" id="form-1">
+            <div class="form-group">
+                <label for="email">Nhập email</label><br>
+                <input type="email" name="" id="email">
+                <span class="form-message"></span>
+            </div>
+            <div class="form-group">
+                <label for="pass">Mật khẩu</label><br>
+                <input type="password" name="" id="pass">
+            </div>
+            <button>Đăng nhập</button>
+        </form>
+    </div>
+    <script>
+        Validator.isEmail=function(selector){
+            return{
+                selector:selector,
+                test:function(value){
+                    let regex =/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/
+                    return regex.test(value) ? undefined :'Trường này phải là email'
+                
+                }
+            }
+}
+        Validator({
+            form:'#form-1',
+            rules:[
+                Validator.isEmail('#email')
+            ]
+
+        })
+
+        function Validator(option){
+            let formElement=document.querySelector(option.form)
+            // console.log(option.rules)
+            if(formElement){
+               option.rules.forEach(function(rules){
+                let inputElement = formElement.querySelector(rules.selector)
+            let errorElement = inputElement.parentElement.querySelector('.form-message')
+               
+                if(inputElement){
+                    inputElement.onblur= function(){
+                       let errorMessage = rules.test(inputElement.value)
+                       if(errorMessage){
+                        errorElement.innerText = errorMessage                     
+                       }
+                       else{
+                        errorElement.innerText =''
+                       }
+                       console.log(inputElement.parentElement.querySelector('.form-message'))
+                    }
+                }
+               })
+            }
+        }
+
+        
+
+        
+    </script>
+</body>
+</html>

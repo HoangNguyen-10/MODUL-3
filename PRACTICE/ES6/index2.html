@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+  
+  <script>
+    const listAnimal = new Set(['cat', 'horse', 'dog'])
+    //thêm loài mới vào danh sách
+    listAnimal.add('fish')
+    console.log(listAnimal)
+    //xóa một loài khỏi danh sách
+    listAnimal.delete('dog')
+    console.log(listAnimal)
+    //kiểm tra xem loài đó có trong danh sách không
+    console.log(listAnimal.has('cat'))
+    //kiểm tra danh sách các loài hiện có
+    console.log(listAnimal.size)
+  </script>
+</body>
+
+</html>

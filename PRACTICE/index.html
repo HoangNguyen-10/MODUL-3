@@ -1,30 +1,33 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
 </head>
+
 <body>
-    <script>
-function Person(){
-    this.firstName='Per'
-    this.lastName ='son'
-    this.sayName = function(){
-        return this.firstName+' '+this.lastName
-    }
+  <script>
+function asyncFunction(callback){
+  console.log('start')
+  setTimeout(()=>{
+    callback()
+  },2000)
+console.log('wait')
 }
 
-function SuperMan(firstNam,lastName){
-    this.firstName = firstName
-    this.lastName = lastName
+function printEnd(){
+  console.log('end')
 }
+// let printEnd = function(){
+//   console.log("end")
+// }
 
-SuperMan.prototype = new Person()
-let sm = new SuperMan('khoa','nguyen')
-console.log(sm.sayName())
- </script>
-       
+asyncFunction(printEnd)
+  
+  </script>
 </body>
+
 </html>

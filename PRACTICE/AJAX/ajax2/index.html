@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css"
+        integrity="sha384-xOolHFLEh07PJGoPkLv1IbcEPTNtaed2xpHsD9ESMhqIYd0nLMwNLD69Npy4HI+N" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+    <title>Document</title>
+    <style>
+        body {
+            text-align: center;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <h1>GIPHY PAR</h1>
+
+        <div class="container-content">
+            <input type="text" id="search-keyword" placeholder="Enter a search term">
+            <input type="number" id="item-amount" min="1" max="5" placeholder="enter the numbers of items">
+            <button class="btn btn-secondary btnSearch" id="search-btn">Search Giphy!</button>
+            <button class="btn btn-danger" id="remove-btn">Remove Imgages</button>
+        </div>
+        <div id="result"></div>
+    </div>
+    <script>
+        let API_KEY = 'b1tcE7pK1JFX0gTMxBmJEdtcZRc8xULj'
+        let imageArr = []
+        let searchingKeyword = document.getElementById('search-keyword')
+        let itemAmount = document.getElementById('item-amount')
+        let searchButton = document.getElementById('search-btn')
+        let removeButton = document.getElementById('remove-btn')
+        let result = document.getElementById('result')
+
+        const getImage = (keyword, amount) => {
+            axios.get('http://api.giphy.com/v1/gifs/search', {
+                params: {
+                    q: keyword,
+                    api_key: API_KEY
+                }
+            })
+                .then(res => {
+                    let resArr = res.data.data
+                    console.log(resArr)
+                    for (let i = 0; i < amount; i++) {
+                        imageArr.push(resArr[i].images.preview_gif.url)
+                    }
+                    console.log(imageArr)
+                    displayImage()
+
+                })
+                .catch(error => console.log(error))
+        }
+
+        searchButton.addEventListener('click', () => {
+            let keyword = searchingKeyword.value
+            let amount = itemAmount.value
+            getImage(keyword, amount)
+            
+        })
+
+        const displayImage = () => {
+            let html = ''
+            for (let i = 0; i < imageArr.length; i++) {
+                html += '<img src="' + imageArr[i] + '" alt="">'
+            }
+            result.innerHTML = html
+        }
+        
+        removeButton.addEventListener('click',()=>{
+            result.innerHTML=''
+            imageArr=[]
+        })
+
+    </script>
+
+</body>
+
+</html>

@@ -17,6 +17,7 @@ async function changeWeatherUI(capitalSearch) {
     let data = await fetch(apiURL).then(res => res.json())
     console.log(data)
     if (data.cod == 200) {
+        
         content.classList.remove('hide')
         city.innerText = data.name
         country.innerText = data.sys.country

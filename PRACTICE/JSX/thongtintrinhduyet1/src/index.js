@@ -1,11 +1,11 @@
-import ReactDOM from 'react-dom/client';
+import ReactDOM from 'react-dom';
 
 const root=ReactDOM.createRoot(document.getElementById('root'));
-const infor=()=>(
+
   root.render(
     <div>
-      <h4>The Browser details: {navigator.userAgent}</h4>
+      <h4>The Browser detail: {navigator.userAgent}</h4>
     </div>
   )
-)
-infor()
+
+

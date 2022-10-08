@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pokemon</title>
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+    <script src="https://unpkg.com/react@17/umd/react.development.js" crossorigin></script>
+    <script src="https://unpkg.com/react-dom@17/umd/react-dom.development.js" crossorigin></script>
+    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+  
+  <style>
+        tr,td {
+            border: 1px solid #000;
+        }
+        .disable{
+            opacity: 0.5;
+        }
+    </style>
+</head>
+<body>
+    <div id="root">
+        <div id="spinner"></div>
+        <table class="pokemon-table">
+            <tr>
+                <td>STT</td>
+                <td>Name</td>
+                <td>Button</td>
+            </tr>
+        </table>
+        <button class="pre-btn">Presious</button>
+        <button class="next-btn">Nex</button>
+    </div>
+    <script type="text/babel" src="main.js"></script>
+
+</body>
+</html>

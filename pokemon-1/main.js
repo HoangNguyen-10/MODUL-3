@@ -34,7 +34,7 @@ class Pokemon{
             </tr>
             `
         })
-        this.pokemonListTable.innerHTML = htmls
+      return this.pokemonListTable.innerHTML = htmls
     }
     handlePaginations(){
         this.nextBtn.onclick = () => {

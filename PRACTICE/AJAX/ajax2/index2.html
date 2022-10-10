@@ -4,18 +4,16 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
     <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
-
+    <title>Document</title>
 </head>
 <body>
     <div class="container">
         <div class="container-content">
-            <input type="text"  id="item-name" placeholder="enter item-name">
-            <input type="number" name="" id="item-amount" placeholder="enter item-amount">
-            <button id='searchBtn'>search</button>
+            <input type="text" name="" id="item-name">
+            <input type="number" name="" id="item-amount">
+            <button id="searchBtn">search</button>
             <button id="removeBtn">remove</button>
-        
         </div>
         <div id="result"></div>
         <img src="" alt="">
@@ -28,7 +26,6 @@
         let removeBtn=document.getElementById('removeBtn')
         let result=document.getElementById('result')
         let imageArr=[]
-
         const getImage=(keyword,amount)=>{
             axios.get('http://api.giphy.com/v1/gifs/search',{
                 params:{
@@ -37,33 +34,35 @@
                 }
             })
             .then(res=>{
-                let resArr=res.data.data
+                const resArr=res.data.data
+                
                 for(let i=0;i<amount;i++){
                     imageArr.push(resArr[i].images.preview_gif.url)
                 }
                 console.log(imageArr)
-          displayImage()
-
+                displayImage()
             })
-            .catch(err=>console.log(err))
         }
 
-         searchBtn.addEventListener('click',()=>{
-            let keyword=searchingKeyword.value
+        searchBtn.addEventListener('click',()=>{
+            let keyword=searchingKeyword.value;
             let amount=itemAmount.value
-            getImage('name',1)
-         })
+            getImage(keyword,amount)
+        })
 
-         const displayImage=()=>{
+        displayImage=()=>{
             html=''
             for(let i=0;i<imageArr.length;i++){
-                html +='<img src="'+imageArr[i]+'" alt="">'
+                html+='<img src="'+imageArr[i]+'" alt="">'
             }
             result.innerHTML=html
-         }
-        // getImage('nam',1)
+        }
+
+        removeBtn.addEventListener('click',()=>{
+            result.innerHTML=''
+        })
+
+        // getImage('nam',2)
     </script>
 </body>
 </html>
-
-

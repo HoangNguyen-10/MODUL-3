@@ -9,26 +9,18 @@
     <script src="https://unpkg.com/react@17/umd/react.development.js" crossorigin></script>
     <script src="https://unpkg.com/react-dom@17/umd/react-dom.development.js" crossorigin></script>
     <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
-    <style>
-        tr,td {
-            border: 1px solid #000;
-        }
-        .disable{
-            opacity: 0.5;
-        }
-    </style>
 </head>
 <body>
     <div class="root">
-        <table class="pokemon-table">
+        <table id="pokemon-table">
             <tr>
                 <td>stt</td>
                 <td>name</td>
                 <td><a href="">click</a></td>
             </tr>
         </table>
-        <button class="pre-btn">previous btn</button>
-        <button class="next-btn">next btn</button>
+        <button id="pre-btn">previous</button>
+        <button id="next-btn">next</button>
     </div>
     <script type="text/babel" src="main2.js"></script>
 </body>

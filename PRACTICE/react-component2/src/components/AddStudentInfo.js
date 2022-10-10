@@ -11,7 +11,7 @@ class Tables extends Component {
         { id: 2, name: 'hieu', age: 19, address: 'thai binh' },
         { id: 3, name: 'linh', age: 16, address: 'ha nam' },
         { id: 4, name: 'huy', age: 25, address: 'ha noi' },
-      ],
+      ]
     }
   }
 
